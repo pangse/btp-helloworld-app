@@ -4,26 +4,58 @@
   "description": "Security profile of called application",
   "scopes": [
     {
-    "name": "$XSAPPNAME.Display",
-    "description": "Display the app as Platform or Business User"
+        "name": "uaa.user",
+        "description": "UAA"
+    }
+    ,
+    {
+        "name": "$XSAPPNAME.Viewer",
+        "description": "Viewer"
+    },
+    {
+        "name": "$XSAPPNAME.Admin",
+        "description": "Administrator"
     }
   ],
   "role-templates": [
     {
-    "name": "HelloWorldDisplayRole",
-    "description": "Hello World Display Role Template",
-    "scope-references": [
-        "$XSAPPNAME.Display"
-    ]
+        "name": "Token_Exchange",
+        "description": "UAA Token Exchange",
+        "scope-references": [
+            "uaa.user"
+        ]
     }
-  ],
+    ,
+    {
+        "name": "Viewer",
+        "description": "Viewer",
+        "scope-references": [
+            "$XSAPPNAME.Viewer"
+        ]
+    },
+    {
+        "name": "Admin",
+        "description": "Administrator",
+        "scope-references": [
+            "$XSAPPNAME.Admin"
+        ]
+    }
+  ]
+  ,
   "role-collections": [
-        {
-        "name": "HelloWorldDisplayRoleCollection",
-        "description": "Hello World Display Role Collection",
+    {
+        "name": "HelloWorld_Viewer",
+        "description": "Viewing access",
         "role-template-references": [
-        "$XSAPPNAME.HelloWorldDisplayRole"
-            ]
-        }
-    ]
+            "$XSAPPNAME.Viewer"
+        ]
+    },
+    {
+        "name": "HelloWorld_Administrator",
+        "description": "Administrative access",
+        "role-template-references": [
+            "$XSAPPNAME.Admin"
+        ]
+    }
+  ]
 }
