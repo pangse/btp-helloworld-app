@@ -15,7 +15,7 @@ sap.ui.define([
             },
             onAlertMessageBoxPress: function () {
                // debugger;
-                MessageBox.alert("You have been alerted!");
+                MessageBox.alert("You have been alerted! Source Change Test 1");
             }            
         });
     });
