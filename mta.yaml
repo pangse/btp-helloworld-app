@@ -17,6 +17,7 @@ modules:
     parameters:
       service-key:
         name: sapbtphellowordui5-uaa-key
+  - name: sapbtphellowordui5-logs        
   parameters:
     content:
       instance:
@@ -58,6 +59,11 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
+- name: sapbtphellowordui5-logs
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: application-logs
+    service-plan: lite
 - name: sapbtphellowordui5-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
